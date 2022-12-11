@@ -20,7 +20,7 @@ export default {
 
     methods: {
         pegarPost() {
-            this.$axios.$get(`https://dummyjson.com/posts/${this.id}`)
+            this.$axios.$get(`https://jsonplaceholder.typicode.com/posts/${this.id}`)
                 .then((response) => {
                     this.post = response;
                 })

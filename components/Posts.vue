@@ -8,7 +8,7 @@
             </div>
         </div>
         <div id="pagination" class="flex justify-center">
-            <ul id="pagination-pessoas" class="pagination-sm pagination"></ul>
+            <ul id="pagination-posts" class="pagination-sm pagination"></ul>
         </div>
     </div>
 </template>
@@ -47,9 +47,9 @@ export default {
 
     methods: {
         pegarPosts() {
-            this.$axios.$get('https://dummyjson.com/posts')
+            this.$axios.$get('https://jsonplaceholder.typicode.com/posts')
                 .then((response) => {
-                    this.listaPosts = response.posts.reverse();
+                    this.listaPosts = response.reverse();
                 })
                 .catch((error) => {
                     console.error(error);
@@ -58,23 +58,23 @@ export default {
                     let totalItems = $('.item-post').length;
                     let itemPorPage = 10;
 
-                    $('.item-post:gt(' + (itemPorPage - 1) + ')').attr('style', 'display: none !important');
+                    $('.item-post:gt(' + (itemPorPage - 1) + ')').hide();
 
-                    $('#pagination-pessoas').twbsPagination({
+                    $('#pagination-posts').twbsPagination({
                         totalPages: Math.ceil(totalItems / itemPorPage),
-                        visiblePages: 3,
+                        visiblePages: 5,
                         next: '›',
                         prev: '‹',
-                        first: false,
-                        last: false,
+                        first: 'Primeira',
+                        last: 'Última',
                         onPageClick: function (event, page) {
-                            $('.item-post').attr('style', 'display: none !important');
+                            $('.item-post').hide();
 
                             let fim = itemPorPage * page;
                             let inicio = fim - itemPorPage;
 
                             for (let i = inicio; i < fim; i++) {
-                                $('.item-post:eq(' + i + ')').attr('style', '');
+                                $('.item-post:eq(' + i + ')').show();
                             }
                         }
                     });
