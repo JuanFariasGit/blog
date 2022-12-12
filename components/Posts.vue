@@ -8,18 +8,32 @@
             </div>
         </div>
         <div id="pagination" class="flex justify-center">
-            <ul id="pagination-posts" class="pagination-sm pagination"></ul>
+            <ul id="pagination-posts" class="pagination"></ul>
         </div>
     </div>
 </template>
+
+<style>
+.pagination {
+    display: flex;
+}
+
+.page-item {
+    padding: 4px 8px;
+    text-decoration: none;
+    color: black;
+}
+
+.page-item.active {
+    background-color: #b16141;
+    color: white !important;
+}
+</style>
   
 <script>
 export default {
     head() {
         return {
-            link: [
-                { rel: 'stylesheet', href: '/css/bootstrap.min.css' }
-            ],
             script: [
                 {
                     src: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js",
@@ -62,7 +76,7 @@ export default {
 
                     $('#pagination-posts').twbsPagination({
                         totalPages: Math.ceil(totalItems / itemPorPage),
-                        visiblePages: 5,
+                        visiblePages: 4,
                         next: '›',
                         prev: '‹',
                         first: 'Primeira',

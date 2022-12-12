@@ -1,5 +1,5 @@
 <template>
-    <div class="col-span-9 p-4">
+    <div class="md:col-span-9 col-span-12 p-4">
         <h1 class="text-4xl">{{ post.title }}</h1>
         <p>{{ post.body }}</p>
     </div>
